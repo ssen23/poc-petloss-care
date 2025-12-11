@@ -1,0 +1,17 @@
+# 가상환경 폴더 (가장 중요! 여기서 5000개 줄어듦)
+venv/
+env/
+.venv/
+
+# 파이썬 캐시 파일
+__pycache__/
+*.pyc
+
+# 리액트/노드 모듈 (여기서 1000개 줄어듦)
+node_modules/
+build/
+dist/
+.DS_Store
+
+# 환경변수 파일
+.env

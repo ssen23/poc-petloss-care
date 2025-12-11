@@ -1,0 +1,98 @@
+[
+  {
+    "id": "hotline_001",
+    "name": "정신건강위기상담전화",
+    "number": "1577-0199",
+    "category": "정신건강",
+    "available": "24시간 연중무휴",
+    "description": "정신건강 위기 상황 전문 상담. 우울, 자살, 정신적 고통 등",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.koreahappiness.kr",
+    "keywords": ["자살", "우울", "정신건강", "위기", "죽고 싶"]
+  },
+  {
+    "id": "hotline_002",
+    "name": "자살예방상담전화",
+    "number": "1393",
+    "category": "자살예방",
+    "available": "24시간 연중무휴",
+    "description": "자살 위기 개입 및 예방 전문 상담",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.suicide.or.kr",
+    "keywords": ["자살", "죽고 싶", "따라가", "끝내고"]
+  },
+  {
+    "id": "hotline_003",
+    "name": "생명의전화",
+    "number": "1588-9191",
+    "category": "심리상담",
+    "available": "24시간 연중무휴",
+    "description": "심리적 어려움 및 고통 상담",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.lifeline.or.kr",
+    "keywords": ["상담", "고통", "힘들", "괴롭"]
+  },
+  {
+    "id": "hotline_004",
+    "name": "보건복지콜센터 (자살 예방 상담)",
+    "number": "129",
+    "category": "보건복지",
+    "available": "24시간 연중무휴",
+    "description": "자살예방, 정신건강 관련 상담 및 복지 정보 제공",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.129.go.kr",
+    "keywords": ["복지", "상담", "자살예방"]
+  },
+  {
+    "id": "hotline_005",
+    "name": "한국생명의전화 (카톡 상담)",
+    "number": "카카오톡: '한국생명의전화'",
+    "category": "온라인상담",
+    "available": "평일 10:00-16:00",
+    "description": "카카오톡을 통한 심리상담 (전화 상담이 부담스러운 분들을 위한)",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.lifeline.or.kr",
+    "keywords": ["카톡", "문자", "온라인", "전화 어려"]
+  },
+  {
+    "id": "hotline_006",
+    "name": "정신건강복지센터 (지역별)",
+    "number": "지역번호 + 3199",
+    "category": "정신건강",
+    "available": "평일 09:00-18:00",
+    "description": "전국 각 지역 정신건강복지센터. 지역 기반 정신건강 서비스 제공",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.mohw.go.kr",
+    "keywords": ["지역", "센터", "정신건강"]
+  },
+  {
+    "id": "hotline_007",
+    "name": "한국트라우마스트레스학회",
+    "number": "02-3272-2544",
+    "category": "트라우마",
+    "available": "평일 09:00-18:00",
+    "description": "트라우마 및 PTSD 전문 상담 및 치료 연계",
+    "language": "한국어",
+    "free": false,
+    "website": "https://www.kstss.kr",
+    "keywords": ["트라우마", "PTSD", "플래시백", "악몽"]
+  },
+  {
+    "id": "hotline_008",
+    "name": "청소년 사이버상담센터",
+    "number": "1388",
+    "category": "청소년",
+    "available": "24시간 연중무휴",
+    "description": "청소년 (만 19세 이하) 대상 심리상담",
+    "language": "한국어",
+    "free": true,
+    "website": "https://www.cyber1388.kr",
+    "keywords": ["청소년", "학생", "19세"]
+  }
+]
