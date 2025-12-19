@@ -1,37 +1,44 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, Sparkles, Brain, Play } from 'lucide-react';
+import { Heart, Sparkles, Play, Clock3, ListChecks } from 'lucide-react';
+import { psychTests } from '../data/testData';
 
 function Site1Landing() {
   const navigate = useNavigate();
 
-  const tests = [
-    {
-      id: 'test1',
-      title: '당신이 지금 키우고 싶은 반려동물은?',
-      description: '당신의 라이프스타일에 맞는 반려동물 찾기',
-      icon: '🐾',
-      gradient: 'from-blue-400 to-cyan-400',
-      path: '/test/test1'
-    },
-    {
-      id: 'test2',
-      title: '당신이 동물이라면 어떤 동물?',
-      description: '당신의 성격을 동물에 비유해보세요',
-      icon: '🦁',
-      gradient: 'from-purple-400 to-pink-400',
-      path: '/test/test2'
-    },
-    {
-      id: 'test3',
-      title: '당신이 원하는 위로는? 어떤 말이 힘이 되나요?',
-      description: '당신에게 맞는 위로의 방식 찾기',
-      icon: '💝',
-      gradient: 'from-rose-400 to-orange-400',
-      badge: '인기',
-      path: '/test/test3'
-    }
-  ];
+  // 아이콘/그라데이션은 UI 표현용이라 데이터와 분리해서 관리 (테스트 추가 시 여기에만 추가하면 됨)
+  const uiMetaByTestId = {
+    test1: { icon: '🐾', gradient: 'from-blue-400 to-cyan-400' },
+    test2: { icon: '🦁', gradient: 'from-purple-400 to-pink-400' },
+    test3: { icon: '💝', gradient: 'from-rose-400 to-orange-400' },
+  };
+
+  const tests = Object.values(psychTests)
+    .map((t) => {
+      const ui = uiMetaByTestId[t.id] || { icon: '✨', gradient: 'from-gray-400 to-slate-400' };
+      const questionCount = Array.isArray(t.questions) ? t.questions.length : 0;
+      const estimatedMinutes = Math.max(1, Math.ceil((questionCount * 15) / 60)); // 15초/문항 가정
+      const badge = t.isCore ? '추천' : undefined;
+
+      return {
+        id: t.id,
+        title: t.title,
+        description: t.description,
+        icon: ui.icon,
+        gradient: ui.gradient,
+        path: `/test/${t.id}`,
+        questionCount,
+        estimatedMinutes,
+        badge,
+      };
+    })
+    // 핵심 테스트(예: test3)를 위로
+    .sort((a, b) => {
+      const aCore = psychTests[a.id]?.isCore ? 1 : 0;
+      const bCore = psychTests[b.id]?.isCore ? 1 : 0;
+      if (aCore !== bCore) return bCore - aCore;
+      return a.id.localeCompare(b.id);
+    });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 p-6">
@@ -75,6 +82,19 @@ function Site1Landing() {
                   <p className="text-gray-600 mb-4">
                     {test.description}
                   </p>
+
+                  {/* 메타 정보 (문항수/예상 시간) */}
+                  <div className="flex flex-wrap gap-3 text-sm text-gray-500 mb-4">
+                    <div className="inline-flex items-center gap-1.5">
+                      <ListChecks className="w-4 h-4" />
+                      <span>{test.questionCount}문항</span>
+                    </div>
+                    <div className="inline-flex items-center gap-1.5">
+                      <Clock3 className="w-4 h-4" />
+                      <span>약 {test.estimatedMinutes}분</span>
+                    </div>
+                  </div>
+
                   <div className="flex items-center gap-2 text-purple-600 font-semibold">
                     <Play className="w-5 h-5" />
                     <span>테스트 시작하기</span>

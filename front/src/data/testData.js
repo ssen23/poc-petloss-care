@@ -236,18 +236,28 @@ export const psychTests = {
   }
 };
 
-// 테스트 결과에서 가장 많이 선택된 값 계산
-export const calculateResult = (answers, testId) => {
-  const test = psychTests[testId];
+// 테스트 결과 Key(가장 많이 선택된 값) 계산
+export const calculateResultKey = (answers = []) => {
+  if (!Array.isArray(answers) || answers.length === 0) return null;
+
   const counts = {};
-  
-  answers.forEach(answer => {
+  answers.forEach((answer) => {
     counts[answer] = (counts[answer] || 0) + 1;
   });
-  
-  const resultKey = Object.keys(counts).reduce((a, b) => 
-    counts[a] > counts[b] ? a : b
-  );
-  
-  return test.results[resultKey];
+
+  const keys = Object.keys(counts);
+  if (keys.length === 0) return null;
+
+  return keys.reduce((a, b) => (counts[a] > counts[b] ? a : b));
+};
+
+// 테스트 결과 계산 (명시적 resultKey가 있으면 그 값을 우선)
+export const calculateResult = (answers, testId, explicitResultKey = null) => {
+  const test = psychTests[testId];
+  if (!test) return null;
+
+  const resultKey = explicitResultKey ?? calculateResultKey(answers);
+  if (!resultKey) return null;
+
+  return test.results?.[resultKey] ?? null;
 };
