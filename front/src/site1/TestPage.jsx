@@ -25,6 +25,12 @@ function TestPage() {
     if (currentQuestion < test.questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      // 결과/복구를 위해 로컬에 저장 (새로고침/공유 진입 대비)
+      try {
+        localStorage.setItem(`site1_${testId}_answers`, JSON.stringify(newAnswers));
+      } catch (_) {
+        // ignore
+      }
       // 테스트 완료 - 결과 페이지로 이동
       navigate(`/test/${testId}/result`, { 
         state: { answers: newAnswers }
